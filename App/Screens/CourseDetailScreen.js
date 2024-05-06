@@ -12,7 +12,7 @@ export default function CourseDetailScreen() {
   const navigate = useNavigation();
   const params = useRoute().params;
   const { user } = useUser();
-  const [userEnrollCourse, setUserEnrolledCourse] = useState([]);
+  const [userEnrolledCourse, setUserEnrolledCourse] = useState([]);
 
   useEffect(() => {
     console.log("On Press: ", params.course)
@@ -43,9 +43,11 @@ export default function CourseDetailScreen() {
         <Ionicons name="arrow-back-circle" size={40} color="black" />
       </TouchableOpacity>
       <DetailSection course={params.course}
-        userEnrollCourse={userEnrollCourse}
+        userEnrolledCourse={userEnrolledCourse}
         enrollCourse={() => UserEnrollCourse()} />
-      <ChapterSection chapterList={params.course.chapters} />
+      <ChapterSection 
+        userEnrolledCourse={userEnrolledCourse}
+      chapterList={params.course.chapters} />
     </ScrollView>
   )
 }
