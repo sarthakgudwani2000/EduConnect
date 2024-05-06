@@ -4,17 +4,7 @@ import Colors from '../../Utils/Colors'
 import OptionItem from './OptionItem'
 import { ScrollView } from 'react-native-gesture-handler'
 
-export default function DetailSection({ course, enrollCourse, userEnrollCourse }) {
-    const [isEnrolled, setIsEnrolled] = useState(false);
-
-    useEffect(() => {
-        if (userEnrollCourse && userEnrollCourse.length > 0) {
-            setIsEnrolled(true);
-        } else {
-            setIsEnrolled(false);
-        }
-    }, [userEnrollCourse]);
-
+export default function DetailSection({ course, enrollCourse, userEnrolledCourse }) {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ padding: 10, borderRadius: 15, backgroundColor: Colors.WHITE }}>
@@ -38,14 +28,14 @@ export default function DetailSection({ course, enrollCourse, userEnrollCourse }
                         <Text style={{ fontFamily: 'outfit', color: Colors.GRAY, lineHeight: 23, marginTop: 10, }}>{course.description?.markdown}</Text>
                     </View>
                     <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', gap: 10 }}>
-                        {!isEnrolled && (
+                        {userEnrolledCourse?.length==0? 
                             <TouchableOpacity
                                 onPress={() => enrollCourse()}
                                 style={{ padding: 15, borderRadius: 15, backgroundColor: Colors.PRIMARY }}
                             >
                                 <Text style={{ fontFamily: 'outfit', fontSize: 13, color: Colors.WHITE, textAlign: 'center' }}>Enroll for Free</Text>
                             </TouchableOpacity>
-                        )}
+                        : null }
                         <TouchableOpacity style={{ padding: 15, borderRadius: 15, backgroundColor: Colors.LIGHT_PRIMARY }}>
                             <Text style={{ fontFamily: 'outfit', fontSize: 13, color: Colors.WHITE, textAlign: 'center' }}>Membership $2.99/month</Text>
                         </TouchableOpacity>
