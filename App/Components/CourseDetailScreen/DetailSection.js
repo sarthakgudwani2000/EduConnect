@@ -4,7 +4,8 @@ import Colors from '../../Utils/Colors'
 import OptionItem from './OptionItem'
 import { ScrollView } from 'react-native-gesture-handler'
 
-export default function DetailSection({ course }) {
+
+export default function DetailSection({ course, enrollCourse }) {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
 
@@ -29,7 +30,9 @@ export default function DetailSection({ course }) {
                     <Text style={{fontFamily:'outfit', color:Colors.GRAY, lineHeight:23, marginTop:10,}}>{course.description?.markdown}</Text>
                 </View>
                 <View style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', gap:10}}>
-                    <TouchableOpacity style={{padding:15, borderRadius:15, backgroundColor:Colors.PRIMARY}}>
+                    <TouchableOpacity 
+                    onPress={() => enrollCourse()}
+                    style={{padding:15, borderRadius:15, backgroundColor:Colors.PRIMARY}}>
                         <Text style={{ fontFamily: 'outfit', fontSize: 13, color: Colors.WHITE, textAlign:'center' }}>Enroll for Free</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{padding:15, borderRadius:15, backgroundColor:Colors.LIGHT_PRIMARY}}>
