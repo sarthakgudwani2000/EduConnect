@@ -40,7 +40,7 @@ export default function CourseList({ level }) {
                                 </View>
                             </View>
                         </View>
-                        <Text style={{marginTop:5, color: Colors.PRIMARY, fontFamily:'outfit-medium'}}>{item.price==0? 'Free' : item.price}</Text>
+                        <Text style={{marginTop:5, color: Colors.PRIMARY, fontFamily:'outfit-medium'}}>{item.price==0? 'free' : item.price}</Text>
                     </View>
                 </View>
             )} />
