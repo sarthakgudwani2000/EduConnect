@@ -25,7 +25,9 @@ export default function CourseList({ level }) {
         <View>
             <SubHeading text={level+' Courses'} color={level=='Basic' && Colors.WHITE}/>
             <FlatList data={courseList} key={courseList.id} horizontal={true} showsHorizontalScrollIndicator={false} renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => navigation.navigate('Course-Detail')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Course-Detail', {
+                    course: item
+                })}>
                     <CourseItem item={item} />
                 </TouchableOpacity>
             )} />
