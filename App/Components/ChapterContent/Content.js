@@ -5,7 +5,7 @@ import ContentItem from './ContentItem'
 import Colors from '../../Utils/Colors'
 import { useNavigation } from '@react-navigation/native'
 
-export default function Content({content}) {
+export default function Content({content, onChapterFinish}) {
   const navigation = useNavigation();
   
   let contentReference; 
@@ -14,7 +14,8 @@ export default function Content({content}) {
   const onNextButtonPress = (index) => {
     if (content?.length <= index + 1)
       {
-        navigation.goBack();
+        // navigation.goBack();
+        onChapterFinish();
         return;
       }
       setActiveIndex(index + 1);
