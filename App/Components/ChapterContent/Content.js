@@ -29,7 +29,7 @@ export default function Content({content, onChapterFinish}) {
           contentReference = ref;
         }} data={content} renderItem={({item, index}) => (
             // Screen Width 
-            <View style={{width:Dimensions.get('screen').width*0.89}}>
+            <View style={{width:Dimensions.get('screen').width*0.92}}>
                 <Text style={{fontFamily:'outfit-medium', fontSize:22, marginTop:15}}>{item.heading}</Text>
                 <ContentItem description={item?.description?.html} output={item?.output?.html}/>
                 <TouchableOpacity style={{marginTop:10}} onPress={() => onNextButtonPress(index)}>
