@@ -29,11 +29,11 @@ export default function Content({content, onChapterFinish}) {
           contentReference = ref;
         }} data={content} renderItem={({item, index}) => (
             // Screen Width 
-            <View style={{width:Dimensions.get('screen').width*0.92}}>
+            <View style={{width:Dimensions.get('screen').width*0.905}}>
                 <Text style={{fontFamily:'outfit-medium', fontSize:22, marginTop:15}}>{item.heading}</Text>
                 <ContentItem description={item?.description?.html} output={item?.output?.html}/>
                 <TouchableOpacity style={{marginTop:10}} onPress={() => onNextButtonPress(index)}>
-                  <Text style={{fontFamily:'outfit', fontSize:17, marginBottom:20, padding:15, backgroundColor: Colors.PRIMARY, color:Colors.WHITE, borderRadius:10, textAlign:'center' }}>
+                  <Text style={{fontFamily:'outfit', fontSize:17, marginBottom:20, padding:15, backgroundColor: Colors.PRIMARY, color:Colors.WHITE, borderRadius:10, textAlign:'center',  }}>
                     {
                       content?.length > index + 1 ? 'Next' : 'Finish'
                     }

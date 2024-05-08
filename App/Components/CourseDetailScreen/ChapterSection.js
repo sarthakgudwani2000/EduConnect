@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function ChapterSection({ chapterList, userEnrolledCourse }) {
 
-    
+    console.log("Chapter List", userEnrolledCourse[0].completedChapter);
     const navigation = useNavigation();
     const OnChapterPress = (chapter) => {
         if (userEnrolledCourse.length == 0) {
@@ -22,7 +22,7 @@ export default function ChapterSection({ chapterList, userEnrolledCourse }) {
         <View style={{ padding: 10, backgroundColor: Colors.WHITE, marginTop: 20, borderRadius: 15, marginBottom: 40 }}>
             <Text style={{ fontFamily: 'outfit-medium', fontSize: 22, }}>Chapters</Text>
             {chapterList.map((item, index) => (
-                <TouchableOpacity key={item.id} style={styles.inCompleteChapter} onPress={() => OnChapterPress(item)}>
+                <TouchableOpacity style={styles.inCompleteChapter} onPress={() => OnChapterPress(item)}>
                     <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                         <Text style={{ fontFamily: 'outfit-medium', fontSize: 27, color: Colors.GRAY }}>{index + 1}</Text>
                         <Text style={{ fontFamily: 'outfit', fontSize: 21, color: Colors.GRAY }}>{item.title}</Text>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: 10,
+        padding: 15,
         borderWidth: 1,
         borderRadius: 10,
         marginTop: 10,
