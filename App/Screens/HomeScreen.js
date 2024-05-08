@@ -29,15 +29,17 @@ export default function HomeScreen() {
 
     const GetUser = () => {
         getUserDetail(user.primaryEmailAddress.emailAddress)
-        .then(response => {
-            console.log("Get User Detail : ", response.userDetail?.point);
-            setUserPoints(response.userDetail?.point)
-        })
+            .then(response => {
+                console.log("Get User Detail : ", response.userDetail?.point);
+                setUserPoints(response.userDetail?.point)
+            })
     }
     return (
         <View>
             <View style={{ backgroundColor: Colors.PRIMARY, height: 250, padding: 20 }}>
-                <Header />
+                <UserPointsContext.Provider value={{ userPoints, setUserPoints }}>
+                    <Header />
+                </UserPointsContext.Provider>
             </View>
             <View style={{ padding: 20 }}>
                 <View style={{ marginTop: -90 }}>

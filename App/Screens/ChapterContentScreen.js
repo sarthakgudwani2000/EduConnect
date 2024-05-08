@@ -30,6 +30,8 @@ export default function ChapterContentScreen() {
             ToastAndroid.show("Chapter Completed", ToastAndroid.SHORT);
             setIsChapterComplete(true);
             navigation.goBack();
+            console.log("Total Points: ", totalPoints);
+            setUserPoints(totalPoints);
           }
       })
   }
