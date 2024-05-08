@@ -6,7 +6,6 @@ import { MarkChapterCompleted } from '../Services';
 
 export default function ChapterContentScreen() {
   const navigation = useNavigation();
-
   const param = useRoute().params;
 
   useEffect(() => {
