@@ -111,27 +111,27 @@ export const MarkChapterCompleted = async (chapterId, recordId, userEmail, point
   return result;
 }
 
-export const createNewUser = async (userName, email, profileImageUrl) => {
+export const createNewUser = async (userName, email, profileImageUrl, getUserDetail) => {
   const mutationQuery = gql`
-  mutation CreateNewUser {
-    upsertUserDetail(
-      upsert: {create:
-        {email: "`+ email + `"},
-        point: 10,
-        profileImage: "`+ profileImageUrl + `",
-        userName: "`+ userName + `"},
-        update: {email: "`+ email + `",
-          profileImage: "`+ profileImageUrl + `", userName: "abc"}}
-          where: {email: "`+ email + `"}
-    ) {
-      id
+    mutation CreateNewUser {
+      upsertUserDetail(
+        upsert: {
+          create: { email: "${email}", point: 10, profileImage: "${profileImageUrl}", userName: "${userName}" }
+          update: { email: "${email}", profileImage: "${profileImageUrl}", userName: "${userName}" }
+        }
+        where: { email: "${email}" }
+      ) {
+        id
+      }
+      publishUserDetail(where: { email: "${email}" }) {
+        id
+      }
     }
-    publishUserDetail(where: {email: "`+email+`"}) {
-      id
-    }
-  }
   `
   const result = await request(MASTER_URL, mutationQuery);
+  if (result) {
+    await getUserDetail(email);
+  }
   return result;
 }
 

@@ -4,7 +4,7 @@ import Header from '../Components/HomeScreen/Header'
 import Colors from '../Utils/Colors'
 import CourseList from '../Components/HomeScreen/CourseList'
 import { useAuth, useUser } from '@clerk/clerk-expo'
-import { createNewUser } from '../Services'
+import { createNewUser, getUserDetail } from '../Services'
 import { UserPointsContext } from '../Context/UserPointsContext'
 
 export default function HomeScreen() {
@@ -18,7 +18,7 @@ export default function HomeScreen() {
 
     const createUser = () => {
         if (user) {
-            createNewUser(user.fullName, user.primaryEmailAddress.emailAddress, user.imageUrl)
+            createNewUser(user.fullName, user.primaryEmailAddress.emailAddress, user.imageUrl, getUserDetail)
                 .then(response => {
                     if (response) {
                         GetUser()
