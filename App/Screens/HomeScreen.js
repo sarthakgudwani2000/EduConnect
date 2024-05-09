@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React, { useContext, useEffect } from 'react'
 import Header from '../Components/HomeScreen/Header'
 import Colors from '../Utils/Colors'
@@ -6,6 +6,7 @@ import CourseList from '../Components/HomeScreen/CourseList'
 import { useAuth, useUser } from '@clerk/clerk-expo'
 import { createNewUser, getUserDetail } from '../Services'
 import { UserPointsContext } from '../Context/UserPointsContext'
+import CourseProgress from '../Components/HomeScreen/CourseProgress'
 
 export default function HomeScreen() {
     const { isLoaded, signOut } = useAuth();
@@ -35,7 +36,7 @@ export default function HomeScreen() {
             })
     }
     return (
-        <View>
+        <ScrollView>
             <View style={{ backgroundColor: Colors.PRIMARY, height: 250, padding: 20 }}>
                 <UserPointsContext.Provider value={{ userPoints, setUserPoints }}>
                     <Header />
@@ -43,10 +44,11 @@ export default function HomeScreen() {
             </View>
             <View style={{ padding: 20 }}>
                 <View style={{ marginTop: -90 }}>
+                    <CourseProgress />
                     <CourseList level={"Basic"} />
                 </View>
                 <CourseList level={"Advance"} />
             </View>
-        </View>
+        </ScrollView>
     )
 }
